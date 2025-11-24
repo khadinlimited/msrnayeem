@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --background: 15 23 42; /* slate-900 */
+  --foreground: 255 255 255;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-slate-900 text-white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cyan-500/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-cyan-500;
+}
+
+/* --- Light Mode Overrides --- */
+/* This ensures complete theme switching even for components with hardcoded dark classes */
+.light body {
+  background-color: #f8fafc; /* slate-50 */
+  color: #0f172a; /* slate-900 */
+}
+
+.light ::-webkit-scrollbar-track {
+  background-color: #f1f5f9;
+}
+
+/* Override background gradients/colors */
+.light .bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, #f8fafc, #ffffff, #f1f5f9) !important;
+}
+
+.light .bg-slate-900 {
+  background-color: #f8fafc !important;
+}
+
+.light .bg-slate-800 {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light .bg-slate-800\/50 {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.light .bg-slate-800\/30 {
+  background-color: #f1f5f9 !important;
+}
+
+/* Override Text Colors */
+.light .text-white {
+  color: #0f172a !important; /* slate-900 */
+}
+
+.light .text-gray-300 {
+  color: #475569 !important; /* slate-600 */
+}
+
+.light .text-gray-400 {
+  color: #64748b !important; /* slate-500 */
+}
+
+/* Input fields in contact form */
+.light input, 
+.light textarea {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.light input:focus, 
+.light textarea:focus {
+  border-color: #06b6d4 !important; /* cyan-500 */
+}
+
+/* Navbar specific */
+.light nav {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-bottom: 1px solid #e2e8f0;
+}
