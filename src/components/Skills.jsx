@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const Skills = () => {
-  const skillCategories = [
+const Skills = ({ data }) => {
+  const skillCategories = data && data.length ? data : [
     {
       title: 'Frontend',
       skills: ['React', 'Next.js', 'JavaScript/TypeScript', 'HTML/CSS', 'TailwindCSS', 'Vue.js'],

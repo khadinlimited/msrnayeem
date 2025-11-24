@@ -3,57 +3,23 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 
-const Projects = () => {
+const Projects = ({ projects: projectsProp }) => {
   const { toast } = useToast();
 
-  const projects = [
+  const projects = projectsProp && projectsProp.length ? projectsProp : [
     {
-      title: "HRM Project",
-      description: "Human Resource Management system for efficient employee and operational management. Features include payroll, attendance, and leave management.",
-      tags: ["React", "Node.js", "PostgreSQL", "TailwindCSS"],
-      image: "HRM dashboard showing employee data and management tools",
-      liveLink: "https://hrm.msrnayeem.cloud",
-      githubLink: "https://github.com/msrnayeem/hrm-project" // Placeholder
+      title: 'HRM Project',
+      description: 'Human Resource Management system for efficient employee and operational management. Features include payroll, attendance, and leave management.',
+      tags: ['React', 'Node.js', 'PostgreSQL', 'TailwindCSS'],
+      liveLink: 'https://hrm.msrnayeem.cloud',
+      githubLink: 'https://github.com/msrnayeem/hrm-project'
     },
     {
-      title: "Marketplace Project",
-      description: "A robust e-commerce marketplace platform connecting buyers and sellers with secure transactions and product listings.",
-      tags: ["Next.js", "MongoDB", "Stripe", "Firebase"],
-      image: "Online marketplace with various product categories and user profiles",
-      liveLink: "https://khadin.com",
-      githubLink: "https://github.com/msrnayeem/marketplace-project" // Placeholder
-    },
-    {
-      title: "Weather Dashboard",
-      description: "Real-time weather tracking application with beautiful visualizations, forecasts, and location-based alerts.",
-      tags: ["React", "API Integration", "Charts.js", "Geolocation"],
-      image: "Weather dashboard showing temperature graphs and forecast cards",
-      liveLink: "#", // Placeholder
-      githubLink: "#" // Placeholder
-    },
-    {
-      title: "Social Media Analytics",
-      description: "Analytics platform for tracking social media performance with insights, reports, and automated scheduling.",
-      tags: ["Next.js", "PostgreSQL", "Chart.js", "OAuth"],
-      image: "Analytics dashboard with social media metrics and growth charts",
-      liveLink: "#", // Placeholder
-      githubLink: "#" // Placeholder
-    },
-    {
-      title: "Real Estate Platform",
-      description: "Property listing platform with advanced search, virtual tours, and mortgage calculator features.",
-      tags: ["React", "Node.js", "Maps API", "PostgreSQL"],
-      image: "Real estate website with property listings and map view",
-      liveLink: "#", // Placeholder
-      githubLink: "#" // Placeholder
-    },
-    {
-      title: "Fitness Tracker",
-      description: "Personal fitness tracking app with workout plans, progress monitoring, and nutrition tracking.",
-      tags: ["React Native", "Express", "MongoDB", "Chart.js"],
-      image: "Fitness app interface showing workout tracking and progress statistics",
-      liveLink: "#", // Placeholder
-      githubLink: "#" // Placeholder
+      title: 'Marketplace Project',
+      description: 'A robust e-commerce marketplace platform connecting buyers and sellers with secure transactions and product listings.',
+      tags: ['Next.js', 'MongoDB', 'Stripe', 'Firebase'],
+      liveLink: 'https://khadin.com',
+      githubLink: 'https://github.com/msrnayeem/marketplace-project'
     }
   ];
 

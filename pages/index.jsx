@@ -6,28 +6,98 @@ import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
 import { Toaster } from '@/components/ui/toaster';
+import SEO from '@/components/SEO';
+import fs from 'fs';
+import path from 'path';
 
-export default function Home() {
+export default function Home({ skills, projects, personal }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 transition-colors duration-300">
-      <Head>
-        <title>Shahidur Rahman Nayeem - Full Stack Developer Portfolio</title>
-        <meta name="description" content="Shahidur Rahman Nayeem is a full-stack developer specializing in React, Node.js, PHP, Laravel, and modern web technologies. View my projects and get in touch." />
-        <meta name="keywords" content="Shahidur Rahman Nayeem, Full Stack Developer, React Developer, Node.js Developer, Laravel Developer, Web Developer Bangladesh, Portfolio" />
-        <meta property="og:title" content="Shahidur Rahman Nayeem - Full Stack Developer" />
-        <meta property="og:description" content="Building exceptional digital experiences with modern web technologies." />
-        <meta property="og:type" content="website" />
-      </Head>
+      <SEO
+        title={`${personal?.name || 'Shahidur Rahman Nayeem'} — ${personal?.title || 'Full Stack Developer'}`}
+        description={personal?.tagline}
+        url="https://msrnayeem.cloud"
+        image={personal?.avatar}
+        keywords={[
+          'web developer',
+          'laravel',
+          'php',
+          'node',
+          'next',
+          'react',
+          'ci-cd',
+          'cicd',
+          'deployment',
+          'docker',
+          'api integration',
+          'courier integration',
+          'payment gateway integration',
+          'stripe',
+          'bkash',
+          'upay',
+          'amarpay',
+          'uddoktapay'
+        ]}
+        authorName={personal?.name}
+        canonical="https://msrnayeem.cloud"
+        twitterHandle="@msrnayeem"
+        jsonLd={{ jobTitle: personal?.title, knowsAbout: [
+          'Web Development',
+          'Laravel',
+          'PHP',
+          'Node.js',
+          'Next.js',
+          'React',
+          'CI/CD',
+          'Deployment',
+          'Docker',
+          'API Integration',
+          'Courier Integration',
+          'Payment Gateway Integration'
+        ] }}
+      />
 
       <Navbar />
       <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Skills />
-        <Contact />
+        <Hero personal={personal} />
+        <About personal={personal} />
+        <Projects projects={projects} />
+        <Skills data={skills} />
+        <Contact personal={personal} />
       </main>
       <Toaster />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const infoDir = path.join(process.cwd(), 'info');
+  let skills = [];
+  let projects = [];
+  let personal = null;
+
+  try {
+    const skillsRaw = fs.readFileSync(path.join(infoDir, 'skills.json'), 'utf8');
+    skills = JSON.parse(skillsRaw);
+  } catch (err) {
+    // ignore — components have fallbacks
+  }
+
+  try {
+    const projectsRaw = fs.readFileSync(path.join(infoDir, 'projects.json'), 'utf8');
+    projects = JSON.parse(projectsRaw);
+  } catch (err) {
+    // ignore
+  }
+
+  try {
+    const personalRaw = fs.readFileSync(path.join(infoDir, 'personal.json'), 'utf8');
+    personal = JSON.parse(personalRaw);
+  } catch (err) {
+    // ignore
+  }
+
+  return {
+    props: { skills, projects, personal },
+  };
 }

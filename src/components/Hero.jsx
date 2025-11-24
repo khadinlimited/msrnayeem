@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const Hero = () => {
+const Hero = ({ personal }) => {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -63,7 +63,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Shahidur Rahman Nayeem
+            {personal?.name || 'Shahidur Rahman Nayeem'}
           </motion.h1>
 
           <motion.h2
@@ -72,7 +72,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Full Stack Developer
+            {personal?.title || 'Full Stack Developer'}
           </motion.h2>
 
           <motion.p
@@ -81,8 +81,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            Building exceptional digital experiences with modern web technologies.
-            Passionate about creating scalable, user-friendly applications.
+            {personal?.tagline || 'Building exceptional digital experiences with modern web technologies.'}
           </motion.p>
 
           <motion.div
@@ -112,13 +111,13 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <a href="https://github.com/msrnayeem" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
+            <a href={personal?.social?.github || 'https://github.com/msrnayeem'} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
               <Github className="w-7 h-7" />
             </a>
-            <a href="https://www.linkedin.com/in/shahidur-rahman-nayeem-14b437181/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
+            <a href={personal?.social?.linkedin || 'https://www.linkedin.com/in/shahidur-rahman-nayeem-14b437181/'} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
               <Linkedin className="w-7 h-7" />
             </a>
-            <a href="mailto:msrnayeem@gmail.com" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
+            <a href={personal?.email ? `mailto:${personal.email}` : 'mailto:msrnayeem@gmail.com'} className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
               <Mail className="w-7 h-7" />
             </a>
           </motion.div>

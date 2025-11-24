@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone, Send, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
-const Contact = () => {
+const Contact = ({ personal }) => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
@@ -49,25 +49,48 @@ const Contact = () => {
     });
   };
 
-  const contactInfo = [
+  // Allow injecting contact info via props; fall back to default values
+  const contactInfo = (typeof personal !== 'undefined' && personal) ? [
     {
       icon: Mail,
-      title: "Email",
-      value: "msrnayeem@gmail.com",
-      link: "mailto:msrnayeem@gmail.com",
+      title: 'Email',
+      value: personal.email || 'msrnayeem@gmail.com',
+      link: personal.email ? `mailto:${personal.email}` : 'mailto:msrnayeem@gmail.com',
+      isPhone: false,
+    },
+    {
+      icon: Phone,
+      title: 'WhatsApp/Phone',
+      value: personal.phone || '+8801770848793',
+      link: personal.phone ? `https://wa.me/${personal.phone.replace(/\D/g, '')}` : 'https://wa.me/8801770848793',
+      isPhone: true,
+    },
+    {
+      icon: MapPin,
+      title: 'Location',
+      value: personal.location || 'Dinajpur, Bangladesh',
+      link: null,
+      isPhone: false,
+    }
+  ] : [
+    {
+      icon: Mail,
+      title: 'Email',
+      value: 'msrnayeem@gmail.com',
+      link: 'mailto:msrnayeem@gmail.com',
       isPhone: false
     },
     {
       icon: Phone,
-      title: "WhatsApp/Phone",
-      value: "+8801770848793",
-      link: "https://wa.me/8801770848793",
+      title: 'WhatsApp/Phone',
+      value: '+8801770848793',
+      link: 'https://wa.me/8801770848793',
       isPhone: true
     },
     {
       icon: MapPin,
-      title: "Location",
-      value: "Dinajpur, Bangladesh",
+      title: 'Location',
+      value: 'Dinajpur, Bangladesh',
       link: null,
       isPhone: false
     }
@@ -267,7 +290,7 @@ const Contact = () => {
           className="mt-20 pt-8 border-t border-slate-700 text-center"
         >
           <p className="text-gray-400">
-            © 2025 Shahidur Rahman Nayeem. Built with React & TailwindCSS
+            © {new Date().getFullYear()} {personal?.name || 'Shahidur Rahman Nayeem'}. Built with React & TailwindCSS
           </p>
         </motion.footer>
       </div>

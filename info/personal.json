@@ -1,0 +1,23 @@
+{
+  "name": "Shahidur Rahman Nayeem",
+  "title": "Full Stack Developer",
+  "tagline": "Building exceptional digital experiences with modern web technologies.",
+  "location": "Dinajpur, Bangladesh",
+  "email": "msrnayeem@gmail.com",
+  "phone": "+8801770848793",
+  "avatar": "https://images.unsplash.com/photo-1634835855106-f4f0dc8279ca",
+  "social": {
+    "github": "https://github.com/msrnayeem",
+    "linkedin": "https://www.linkedin.com/in/shahidur-rahman-nayeem-14b437181/"
+  },
+  "bio": [
+    "Hi! I'm Shahidur Rahman Nayeem, a passionate full-stack developer with over 5 years of experience building web applications.",
+    "I specialize in creating seamless user experiences with modern technologies like React, Node.js, and cloud platforms. I love solving complex problems and transforming ideas into elegant, functional solutions."
+  ],
+  "highlights": [
+    { "icon": "Code2", "title": "Clean Code", "description": "Writing maintainable and scalable code" },
+    { "icon": "Zap", "title": "Performance", "description": "Optimized for speed and efficiency" },
+    { "icon": "Database", "title": "Full Stack", "description": "Frontend to backend expertise" },
+    { "icon": "Globe", "title": "Modern Web", "description": "Latest technologies and best practices" }
+  ]
+}
