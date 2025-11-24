@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 
 const Projects = () => {
@@ -58,93 +57,70 @@ const Projects = () => {
     }
   ];
 
-  const handleLinkClick = (e, linkType, projectTitle) => {
+  const handleLinkClick = (e, link) => {
     e.preventDefault();
-    const link = linkType === 'live' ? projects.find(p => p.title === projectTitle).liveLink : projects.find(p => p.title === projectTitle).githubLink;
-
+    if (typeof window === 'undefined') return;
     if (link && link !== '#') {
-      window.open(link, '_blank');
+      window.open(link, '_blank', 'noopener');
     } else {
-      toast({
-        title: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀"
-      });
+      toast({ title: "🚧 Link not available" });
     }
   };
 
   return (
-    <section id="projects" className="py-20 px-4 bg-slate-800/30">
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-12 px-4">
+      <div className="max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 8 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-6"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-            Featured Projects
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mb-4" />
-          <p className="text-gray-400 text-lg">A showcase of my recent work and personal projects</p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-1">Featured Projects</h2>
+          <p className="text-gray-400 text-sm">A concise showcase of recent work</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((project, idx) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
+              key={idx}
+              initial={{ opacity: 0, y: 8 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-slate-800/50 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/10 group"
+              transition={{ duration: 0.4, delay: idx * 0.04 }}
+              className="p-4 rounded-lg bg-slate-800/50 border border-slate-700"
             >
-              <div className="relative overflow-hidden h-48">
-                <img 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  alt={project.image}
-                 src="https://images.unsplash.com/photo-1572177812156-58036aae439c" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60" />
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-lg font-semibold text-white">{project.title}</h3>
+                  <div className="text-xs text-gray-400 mt-1">{project.tags.join(' • ')}</div>
+                </div>
+
+                <div className="flex items-center gap-2 ml-auto">
+                  <button
+                    aria-label={`Open ${project.title} code`}
+                    onClick={(e) => handleLinkClick(e, project.githubLink)}
+                    className="p-1 rounded-md text-cyan-300 hover:bg-slate-700/40"
+                  >
+                    <Github className="w-4 h-4" />
+                  </button>
+                  <button
+                    aria-label={`Open ${project.title} live`}
+                    onClick={(e) => handleLinkClick(e, project.liveLink)}
+                    className="p-1 rounded-md text-cyan-300 hover:bg-slate-700/40"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                  </button>
+                </div>
               </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 mb-4 text-sm leading-relaxed">
-                  {project.description}
-                </p>
+              <p className="text-gray-400 text-sm mt-3 mb-3">{project.description.length > 140 ? project.description.slice(0, 140) + '…' : project.description}</p>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-xs rounded-full border border-cyan-500/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="flex gap-3">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={(e) => handleLinkClick(e, 'github', project.title)}
-                    className="flex-1 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
-                  >
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={(e) => handleLinkClick(e, 'live', project.title)}
-                    className="flex-1 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Live
-                  </Button>
-                </div>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((t, i) => (
+                  <span key={i} className="px-3 py-1 bg-slate-700 rounded-full text-sm text-gray-200">{t}</span>
+                ))}
               </div>
             </motion.div>
           ))}

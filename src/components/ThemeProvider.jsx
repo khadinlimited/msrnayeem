@@ -6,11 +6,26 @@ const ThemeContext = createContext({
 });
 
 export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 'vite-ui-theme' }) {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem(storageKey) || defaultTheme;
-  });
+  // Initialize with defaultTheme to avoid accessing localStorage during SSR
+  const [theme, setTheme] = useState(defaultTheme);
 
+  // On mount (client-side), load persisted theme if available
   useEffect(() => {
+    try {
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const stored = localStorage.getItem(storageKey);
+        if (stored) setTheme(stored);
+      }
+    } catch (err) {
+      // ignore storage errors
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Apply theme classes whenever theme changes
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const root = window.document.documentElement;
     root.classList.remove('light', 'dark');
 
@@ -19,14 +34,8 @@ export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 
         ? 'dark'
         : 'light';
 
-      if (systemTheme === 'light') {
-        root.classList.add('light');
-      }
-      // Default is dark, so we don't need to add 'dark' class, just ensure 'light' is removed.
-      // But consistency helps.
-      if (systemTheme === 'dark') {
-        root.classList.add('dark');
-      }
+      if (systemTheme === 'light') root.classList.add('light');
+      if (systemTheme === 'dark') root.classList.add('dark');
       return;
     }
 
@@ -35,21 +44,24 @@ export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 
 
   const value = {
     theme,
-    setTheme: (theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
+    setTheme: (t) => {
+      try {
+        if (typeof window !== 'undefined' && window.localStorage) {
+          localStorage.setItem(storageKey, t);
+        }
+      } catch (err) {
+        // ignore
+      }
+      setTheme(t);
     },
   };
 
   return (
-    <ThemeContext.Provider value={value} {...props}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   );
 }
-
-// Helper to ignore props spreading warning in the code block above
-const props = {};
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);

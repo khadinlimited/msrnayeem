@@ -7,6 +7,7 @@
 :root {
   --background: 15 23 42; /* slate-900 */
   --foreground: 255 255 255;
+  --radius: 0.75rem; /* global border radius */
 }
 
 body {
@@ -102,4 +103,50 @@ html {
 .light nav {
   background-color: rgba(255, 255, 255, 0.8) !important;
   border-bottom: 1px solid #e2e8f0;
+}
+
+/* Consistent border radius across common UI elements */
+/* Use a custom variable so it's easy to tweak project-wide */
+img,
+button,
+input,
+textarea,
+select {
+  border-radius: var(--radius) !important;
+}
+
+/* Give structural containers a subtle rounding too */
+section,
+header,
+footer,
+nav,
+article,
+aside,
+.card,
+.btn,
+.button,
+.toast,
+.dropdown-menu {
+  border-radius: calc(var(--radius) + 0px) !important;
+}
+
+/* Keep utility rounded- classes working — this ensures no conflicts */
+.rounded,
+.rounded-sm,
+.rounded-md,
+.rounded-lg,
+.rounded-xl,
+.rounded-2xl,
+.rounded-full {
+  border-radius: inherit;
+}
+
+/* Ensure any Tailwind rounded utility still uses the global radius in cards */
+[class*="rounded"] {
+  border-radius: var(--radius) !important;
+}
+
+/* Ensure elements with .card class use the global radius too */
+.card {
+  border-radius: var(--radius) !important;
 }
