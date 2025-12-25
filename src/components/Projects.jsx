@@ -64,19 +64,22 @@ const Projects = ({ projects: projectsProp }) => {
                 </div>
 
                 <div className="flex items-center gap-2 ml-auto">
-                  <button
-                    aria-label={`Open ${project.title} code`}
-                    onClick={(e) => handleLinkClick(e, project.githubLink)}
-                    className="p-1 rounded-md text-cyan-300 hover:bg-slate-700/40"
-                  >
-                    <Github className="w-4 h-4" />
-                  </button>
+                  {project.githubLink && project.githubLink !== '#' && (
+                    <button
+                      aria-label={`Open ${project.title} code`}
+                      onClick={(e) => handleLinkClick(e, project.githubLink)}
+                      className="p-1 rounded-md text-cyan-300 hover:bg-slate-700/40"
+                    >
+                      <Github className="w-4 h-4" />
+                    </button>
+                  )}
                   <button
                     aria-label={`Open ${project.title} live`}
                     onClick={(e) => handleLinkClick(e, project.liveLink)}
-                    className="p-1 rounded-md text-cyan-300 hover:bg-slate-700/40"
+                    className="flex items-center gap-1.5 px-2 py-1 rounded-md text-cyan-300 hover:bg-slate-700/40 transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
+                    <span className="text-xs font-medium">Live</span>
                   </button>
                 </div>
               </div>

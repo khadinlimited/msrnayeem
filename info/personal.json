@@ -1,7 +1,7 @@
 {
-  "name": "Shahidur Rahman Nayeem",
-  "title": "Full Stack Developer",
-  "tagline": "Building exceptional digital experiences with modern web technologies.",
+  "name": "Md Shahidur Rahman Nayeem",
+  "title": "Software Developer",
+  "tagline": "Passionate Full Stack Developer with 3+ years of experience specializing in Laravel, Node.js, and Next.js.",
   "location": "Dinajpur, Bangladesh",
   "email": "msrnayeem@gmail.com",
   "phone": "+8801770848793",
@@ -11,13 +11,29 @@
     "linkedin": "https://www.linkedin.com/in/shahidur-rahman-nayeem-14b437181/"
   },
   "bio": [
-    "Hi! I'm Shahidur Rahman Nayeem, a passionate full-stack developer with over 5 years of experience building web applications.",
-    "I specialize in creating seamless user experiences with modern technologies like React, Node.js, and cloud platforms. I love solving complex problems and transforming ideas into elegant, functional solutions."
+    "I am a passionate Full Stack Developer with 3+ years of experience specializing in Laravel, Node.js, and Next.js. I have a strong background in building scalable SaaS platforms, digital marketplaces, and complex HR/management systems.",
+    "I am a power user of AI agents and LLM tools, leveraging them to accelerate development cycles and write optimized, bug-free code. I am committed to modern software architecture and high-impact web solutions."
   ],
   "highlights": [
-    { "icon": "Code2", "title": "Clean Code", "description": "Writing maintainable and scalable code" },
-    { "icon": "Zap", "title": "Performance", "description": "Optimized for speed and efficiency" },
-    { "icon": "Database", "title": "Full Stack", "description": "Frontend to backend expertise" },
-    { "icon": "Globe", "title": "Modern Web", "description": "Latest technologies and best practices" }
+    {
+      "icon": "Code2",
+      "title": "Clean Code",
+      "description": "Writing maintainable and scalable code"
+    },
+    {
+      "icon": "Zap",
+      "title": "AI Driven",
+      "description": "Leveraging AI for rapid development"
+    },
+    {
+      "icon": "Database",
+      "title": "Full Stack",
+      "description": "Laravel, Node.js, and Next.js expertise"
+    },
+    {
+      "icon": "Globe",
+      "title": "Scalable SaaS",
+      "description": "Building high-impact web solutions"
+    }
   ]
 }

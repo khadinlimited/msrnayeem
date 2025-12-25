@@ -12,7 +12,7 @@ const Contact = ({ personal }) => {
     subject: '',
     message: ''
   });
-  
+
   const [showPhone, setShowPhone] = useState(false);
 
   const handleChange = (e) => {
@@ -24,7 +24,7 @@ const Contact = ({ personal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
@@ -121,7 +121,7 @@ const Contact = ({ personal }) => {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-bold text-white mb-6">Send Me a Message</h3>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">
@@ -205,7 +205,7 @@ const Contact = ({ personal }) => {
           >
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
-              
+
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <motion.div
@@ -222,30 +222,30 @@ const Contact = ({ personal }) => {
                     <div className="flex-1">
                       <p className="text-gray-400 text-sm mb-1">{info.title}</p>
                       {info.isPhone ? (
-                         <div className="flex items-center gap-2">
-                            {showPhone ? (
-                               <a
-                                href={info.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-white font-medium hover:text-cyan-400 transition-colors"
-                              >
-                                {info.value}
-                              </a>
-                            ) : (
-                              <span className="text-white font-medium blur-[4px] select-none">
-                                +880 17 XXXX XXXX
-                              </span>
-                            )}
-                            <button 
-                              onClick={() => setShowPhone(!showPhone)}
-                              className="ml-auto text-gray-400 hover:text-cyan-400"
-                              type="button"
-                              aria-label={showPhone ? "Hide phone number" : "Show phone number"}
+                        <div className="flex items-center gap-2">
+                          {showPhone ? (
+                            <a
+                              href={info.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-white font-medium hover:text-cyan-400 transition-colors"
                             >
-                               {showPhone ? <EyeOff size={18} /> : <Eye size={18} />}
-                            </button>
-                         </div>
+                              {info.value}
+                            </a>
+                          ) : (
+                            <span className="text-white font-medium blur-[4px] select-none">
+                              +880 17 XXXX XXXX
+                            </span>
+                          )}
+                          <button
+                            onClick={() => setShowPhone(!showPhone)}
+                            className="ml-auto text-gray-400 hover:text-cyan-400"
+                            type="button"
+                            aria-label={showPhone ? "Hide phone number" : "Show phone number"}
+                          >
+                            {showPhone ? <EyeOff size={18} /> : <Eye size={18} />}
+                          </button>
+                        </div>
                       ) : info.link ? (
                         <a
                           href={info.link}
@@ -267,17 +267,9 @@ const Contact = ({ personal }) => {
             <div className="bg-slate-800/50 p-6 rounded-lg border border-slate-700">
               <h3 className="text-xl font-bold text-white mb-4">Let's Work Together</h3>
               <p className="text-gray-400 leading-relaxed">
-                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. 
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
                 Feel free to reach out through the contact form or any of the channels listed above.
               </p>
-            </div>
-
-            <div className="relative h-64 rounded-lg overflow-hidden">
-              <img 
-                className="w-full h-full object-cover"
-                alt="Developer workspace with multiple monitors"
-               src="https://images.unsplash.com/photo-1484093609847-d2cc4eaea2cc" />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent" />
             </div>
           </motion.div>
         </div>

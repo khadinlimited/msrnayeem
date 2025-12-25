@@ -1,30 +1,76 @@
 [
   {
-    "title": "HRM Project",
-    "description": "Human Resource Management system for efficient employee and operational management. Features include payroll, attendance, and leave management.",
-    "tags": ["React", "Node.js", "PostgreSQL", "TailwindCSS"],
-    "liveLink": "https://hrm.msrnayeem.cloud",
-    "githubLink": "https://github.com/msrnayeem/hrm-project"
+    "title": "HRSoft",
+    "description": "A comprehensive HR solution featuring employee lifecycle management and an automated payroll engine. Featuring ZKTeco Biometric Integration for real-time automated attendance tracking.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "ZKLibrary",
+      "Bootstrap"
+    ],
+    "liveLink": "https://hrsoft.msrnayeem.cloud"
   },
   {
-    "title": "Marketplace Project",
-    "description": "A robust e-commerce marketplace platform connecting buyers and sellers with secure transactions and product listings.",
-    "tags": ["Next.js", "MongoDB", "Stripe", "Firebase"],
-    "liveLink": "https://khadin.com",
-    "githubLink": "https://github.com/msrnayeem/marketplace-project"
+    "title": "FileShare",
+    "description": "A file-sharing SaaS featuring a dual-monetization model (subscriptions and PPD) with secure wallet management and Cloudflare R2 storage.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "Cloudflare R2",
+      "JavaScript"
+    ],
+    "liveLink": "https://fileshare.msrnayeem.com"
   },
   {
-    "title": "Weather Dashboard",
-    "description": "Real-time weather tracking application with beautiful visualizations, forecasts, and location-based alerts.",
-    "tags": ["React", "API Integration", "Charts.js", "Geolocation"],
-    "liveLink": "#",
-    "githubLink": "#"
+    "title": "Webzez",
+    "description": "A multi-tenant SaaS platform allowing users to launch their own eCommerce stores instantly. Managed core codebase and engineered new features.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "Multi-tenancy"
+    ],
+    "liveLink": "https://webzez.com"
   },
   {
-    "title": "Social Media Analytics",
-    "description": "Analytics platform for tracking social media performance with insights, reports, and automated scheduling.",
-    "tags": ["Next.js", "PostgreSQL", "Chart.js", "OAuth"],
-    "liveLink": "#",
-    "githubLink": "#"
+    "title": "On-Demand",
+    "description": "A real-time booking platform with multi-tenant data isolation and secure Role-Based Access Control (RBAC).",
+    "tags": [
+      "Next.js",
+      "Prisma",
+      "PostgreSQL",
+      "Tailwind CSS"
+    ],
+    "liveLink": "https://ondemand.msrnayeem.com"
+  },
+  {
+    "title": "Acme Electronics",
+    "description": "A custom eCommerce platform integrated with Amazon Selling Partner API (SP API) for real-time stock and order synchronization.",
+    "tags": [
+      "Next.js",
+      "Node.js",
+      "Amazon SP API",
+      "PostgreSQL"
+    ],
+    "liveLink": "http://5.183.8.148:4060"
+  },
+  {
+    "title": "Redaxify",
+    "description": "A specialized tool for video/audio redaction and summarization, featuring Azure Indexing API integration.",
+    "tags": [
+      "Next.js",
+      "PostgreSQL",
+      "Azure Indexing API"
+    ],
+    "liveLink": "https://redaxify.com"
+  },
+  {
+    "title": "BeyondStar Pharmacy System",
+    "description": "A tailored pharmacy management system with bulk medicine import features and streamlined sales/purchase workflows.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "jQuery"
+    ],
+    "liveLink": "https://pharmacy.beyondstardigital.com"
   }
 ]
