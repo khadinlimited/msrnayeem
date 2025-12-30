@@ -22,20 +22,32 @@ export async function generateMetadata() {
     const image = personal?.avatar || `${url}/og-image.png`;
 
     return {
-        title,
+        title: {
+            default: title,
+            template: `%s | ${personal?.name || 'MSR Nayeem'}`
+        },
         description,
         authors: [{ name: personal?.name || 'Shahidur Rahman Nayeem' }],
         keywords: [
-            'web developer', 'laravel', 'php', 'node', 'next', 'react', 'ci-cd', 'cicd',
+            'web developer', 'full stack developer', 'bangladesh', 'dinajpur',
+            'laravel', 'php', 'node', 'next', 'react', 'ci-cd', 'cicd',
             'deployment', 'docker', 'api integration', 'courier integration',
             'payment gateway integration', 'stripe', 'bkash', 'upay', 'amarpay', 'uddoktapay'
         ],
+        metadataBase: new URL(url),
         openGraph: {
             title,
             description,
             url,
-            images: [{ url: image }],
+            siteName: personal?.name || 'MSR Nayeem Portfolio',
+            locale: 'en_US',
             type: 'website',
+            images: [{
+                url: image,
+                width: 1200,
+                height: 630,
+                alt: title,
+            }],
         },
         twitter: {
             card: 'summary_large_image',
@@ -43,6 +55,17 @@ export async function generateMetadata() {
             description,
             images: [image],
             creator: '@msrnayeem',
+        },
+        robots: {
+            index: true,
+            follow: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
+            },
         },
         alternates: {
             canonical: url,
