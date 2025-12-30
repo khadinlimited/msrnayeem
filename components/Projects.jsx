@@ -8,22 +8,7 @@ import { useToast } from '@/components/ui/use-toast';
 const Projects = ({ projects: projectsProp }) => {
   const { toast } = useToast();
 
-  const projects = projectsProp && projectsProp.length ? projectsProp : [
-    {
-      title: 'HRM Project',
-      description: 'Human Resource Management system for efficient employee and operational management. Features include payroll, attendance, and leave management.',
-      tags: ['React', 'Node.js', 'PostgreSQL', 'TailwindCSS'],
-      liveLink: 'https://hrm.msrnayeem.cloud',
-      githubLink: 'https://github.com/msrnayeem/hrm-project'
-    },
-    {
-      title: 'Marketplace Project',
-      description: 'A robust e-commerce marketplace platform connecting buyers and sellers with secure transactions and product listings.',
-      tags: ['Next.js', 'MongoDB', 'Stripe', 'Firebase'],
-      liveLink: 'https://khadin.com',
-      githubLink: 'https://github.com/msrnayeem/marketplace-project'
-    }
-  ];
+  const projects = projectsProp || [];
 
   const handleLinkClick = (e, link) => {
     e.preventDefault();

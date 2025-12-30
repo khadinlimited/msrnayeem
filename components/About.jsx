@@ -5,19 +5,8 @@ import { motion } from 'framer-motion';
 import { Code2, Database, Globe, Zap } from 'lucide-react';
 
 const About = ({ personal }) => {
-  const highlights = (personal?.highlights && personal.highlights.length)
-    ? personal.highlights
-    : [
-      { icon: Code2, title: 'Clean Code', description: 'Writing maintainable and scalable code' },
-      { icon: Zap, title: 'Performance', description: 'Optimized for speed and efficiency' },
-      { icon: Database, title: 'Full Stack', description: 'Frontend to backend expertise' },
-      { icon: Globe, title: 'Modern Web', description: 'Latest technologies and best practices' },
-    ];
-
-  const bio = personal?.bio && personal.bio.length ? personal.bio : [
-    "Hi! I'm Shahidur Rahman Nayeem, a passionate full-stack developer with over 5 years of experience building web applications.",
-    "I specialize in creating seamless user experiences with modern technologies like React, Node.js, and cloud platforms. Based in Dinajpur, Bangladesh."
-  ];
+  const highlights = personal?.highlights || [];
+  const bio = personal?.bio || [];
 
   const iconMap = { Code2, Zap, Database, Globe };
 

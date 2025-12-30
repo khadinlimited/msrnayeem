@@ -65,7 +65,7 @@ const Hero = ({ personal }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {personal?.name || 'Shahidur Rahman Nayeem'}
+            {personal?.name || ''}
           </motion.h1>
 
           <motion.h2
@@ -74,7 +74,7 @@ const Hero = ({ personal }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {personal?.title || 'Full Stack Developer'}
+            {personal?.title || ''}
           </motion.h2>
 
           <motion.p
@@ -83,7 +83,7 @@ const Hero = ({ personal }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            {personal?.tagline || 'Building exceptional digital experiences with modern web technologies.'}
+            {personal?.tagline || ''}
           </motion.p>
 
           <motion.div
@@ -113,15 +113,21 @@ const Hero = ({ personal }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
           >
-            <a href={personal?.social?.github || 'https://github.com/msrnayeem'} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
-              <Github className="w-7 h-7" />
-            </a>
-            <a href={personal?.social?.linkedin || 'https://www.linkedin.com/in/shahidur-rahman-nayeem-14b437181/'} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
-              <Linkedin className="w-7 h-7" />
-            </a>
-            <a href={personal?.email ? `mailto:${personal.email}` : 'mailto:msrnayeem@gmail.com'} className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
-              <Mail className="w-7 h-7" />
-            </a>
+            {personal?.social?.github && (
+              <a href={personal.social.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
+                <Github className="w-7 h-7" />
+              </a>
+            )}
+            {personal?.social?.linkedin && (
+              <a href={personal.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
+                <Linkedin className="w-7 h-7" />
+              </a>
+            )}
+            {personal?.email && (
+              <a href={`mailto:${personal.email}`} className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 transform hover:scale-110">
+                <Mail className="w-7 h-7" />
+              </a>
+            )}
           </motion.div>
         </motion.div>
 

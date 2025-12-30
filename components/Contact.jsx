@@ -16,6 +16,7 @@ const Contact = ({ personal }) => {
   });
 
   const [showPhone, setShowPhone] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,7 +25,7 @@ const Contact = ({ personal }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Basic validation
@@ -36,65 +37,69 @@ const Contact = ({ personal }) => {
       return;
     }
 
-    // Show success message
-    toast({
-      title: "Message sent successfully!",
-      description: "Thank you for reaching out. I'll get back to you soon!"
-    });
+    setIsSubmitting(true);
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Show success message
+        toast({
+          title: "Message sent successfully!",
+          description: "Thank you for reaching out. I've sent you a confirmation email!"
+        });
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error(data.error || 'Failed to send message');
+      }
+    } catch (error) {
+      toast({
+        title: "Error sending message",
+        description: error.message || "Something went wrong. Please try again later.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  // Allow injecting contact info via props; fall back to default values
-  const contactInfo = (typeof personal !== 'undefined' && personal) ? [
+  // Use contact info from props with safe defaults
+  const contactInfo = [
     {
       icon: Mail,
       title: 'Email',
-      value: personal.email || 'msrnayeem@gmail.com',
-      link: personal.email ? `mailto:${personal.email}` : 'mailto:msrnayeem@gmail.com',
+      value: personal?.email || 'msrnayeem@gmail.com',
+      link: personal?.email ? `mailto:${personal.email}` : 'mailto:msrnayeem@gmail.com',
       isPhone: false,
     },
     {
       icon: Phone,
       title: 'WhatsApp/Phone',
-      value: personal.phone || '+8801770848793',
-      link: personal.phone ? `https://wa.me/${personal.phone.replace(/\D/g, '')}` : 'https://wa.me/8801770848793',
+      value: personal?.phone || '+8801770848793',
+      link: personal?.phone ? `https://wa.me/${personal.phone.replace(/\D/g, '')}` : 'https://wa.me/8801770848793',
       isPhone: true,
     },
     {
       icon: MapPin,
       title: 'Location',
-      value: personal.location || 'Dinajpur, Bangladesh',
+      value: personal?.location || 'Dinajpur, Bangladesh',
       link: null,
       isPhone: false,
-    }
-  ] : [
-    {
-      icon: Mail,
-      title: 'Email',
-      value: 'msrnayeem@gmail.com',
-      link: 'mailto:msrnayeem@gmail.com',
-      isPhone: false
-    },
-    {
-      icon: Phone,
-      title: 'WhatsApp/Phone',
-      value: '+8801770848793',
-      link: 'https://wa.me/8801770848793',
-      isPhone: true
-    },
-    {
-      icon: MapPin,
-      title: 'Location',
-      value: 'Dinajpur, Bangladesh',
-      link: null,
-      isPhone: false
     }
   ];
 
@@ -190,10 +195,20 @@ const Contact = ({ personal }) => {
 
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-6 text-lg transition-all duration-300 hover:scale-105"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white py-6 text-lg transition-all duration-300 hover:scale-105 disabled:opacity-70 disabled:hover:scale-100"
               >
-                <Send className="w-5 h-5 mr-2" />
-                Send Message
+                {isSubmitting ? (
+                  <div className="flex items-center">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
+                    Sending...
+                  </div>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5 mr-2" />
+                    Send Message
+                  </>
+                )}
               </Button>
             </form>
           </motion.div>

@@ -4,24 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Skills = ({ data }) => {
-  const skillCategories = data && data.length ? data : [
-    {
-      title: 'Frontend',
-      skills: ['React', 'Next.js', 'JavaScript/TypeScript', 'HTML/CSS', 'TailwindCSS', 'Vue.js'],
-    },
-    {
-      title: 'Backend',
-      skills: ['Node.js', 'PHP', 'Laravel', 'Express', 'PostgreSQL', 'MongoDB', 'REST APIs'],
-    },
-    {
-      title: 'DevOps/Tools',
-      skills: ['Git/GitHub', 'Docker (Basic)', 'CI/CD', 'cPanel', 'VPS Setup', 'AWS', 'Firebase', 'Agile/Scrum'],
-    },
-    {
-      title: 'Integrations',
-      skills: ['API Integration', 'Stripe', 'bKash', 'Upay', 'AmarPay', 'UddoktaPay', 'Pathao', 'RedX', 'Steadfast'],
-    },
-  ];
+  const skillCategories = data || [];
 
   return (
     <section id="skills" className="py-12 px-4">
