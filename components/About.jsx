@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Database, Globe, Zap } from 'lucide-react';
@@ -42,7 +44,7 @@ const About = ({ personal }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <img 
+            <img
               className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
               alt={personal?.name || 'Full-stack developer'}
               src={personal?.avatar || 'https://images.unsplash.com/photo-1634835855106-f4f0dc8279ca'}

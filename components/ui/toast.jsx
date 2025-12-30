@@ -1,3 +1,5 @@
+"use client";
+
 import { cn } from '@/lib/utils';
 import * as ToastPrimitives from '@radix-ui/react-toast';
 import { cva } from 'class-variance-authority';
@@ -25,7 +27,7 @@ const toastVariants = cva(
 			variant: {
 				default: 'bg-background border',
 				destructive:
-          'group destructive border-destructive bg-destructive text-destructive-foreground',
+					'group destructive border-destructive bg-destructive text-destructive-foreground',
 			},
 		},
 		defaultVariants: {

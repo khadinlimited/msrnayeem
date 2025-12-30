@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react"
 
 const TOAST_LIMIT = 1
@@ -13,19 +15,19 @@ const toastStore = {
     toasts: [],
   },
   listeners: [],
-  
+
   getState: () => toastStore.state,
-  
+
   setState: (nextState) => {
     if (typeof nextState === 'function') {
       toastStore.state = nextState(toastStore.state)
     } else {
       toastStore.state = { ...toastStore.state, ...nextState }
     }
-    
+
     toastStore.listeners.forEach(listener => listener(toastStore.state))
   },
-  
+
   subscribe: (listener) => {
     toastStore.listeners.push(listener)
     return () => {
@@ -67,15 +69,15 @@ export const toast = ({ ...props }) => {
 
 export function useToast() {
   const [state, setState] = useState(toastStore.getState())
-  
+
   useEffect(() => {
     const unsubscribe = toastStore.subscribe((state) => {
       setState(state)
     })
-    
+
     return unsubscribe
   }, [])
-  
+
   useEffect(() => {
     const timeouts = []
 
