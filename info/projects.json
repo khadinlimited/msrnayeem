@@ -11,7 +11,7 @@
     "liveLink": "https://hrsoft.msrnayeem.cloud"
   },
   {
-    "title": "FileShare",
+    "title": "UploadCafe",
     "description": "A file-sharing SaaS featuring a dual-monetization model (subscriptions and PPD) with secure wallet management and Cloudflare R2 storage.",
     "tags": [
       "Laravel",
@@ -19,7 +19,7 @@
       "Cloudflare R2",
       "JavaScript"
     ],
-    "liveLink": "https://fileshare.msrnayeem.com"
+    "liveLink": "https://uploadcafe.com"
   },
   {
     "title": "Webzez",
