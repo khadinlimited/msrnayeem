@@ -1,14 +1,15 @@
 [
   {
-    "title": "HRSoft",
-    "description": "A comprehensive HR solution featuring employee lifecycle management and an automated payroll engine. Featuring ZKTeco Biometric Integration for real-time automated attendance tracking.",
+    "title": "Khadin",
+    "description": "A classified marketplace platform built with Next.js, Laravel, and Flutter. Responsible for full-stack customization and DevOps management.",
     "tags": [
+      "Next.js",
       "Laravel",
       "MySQL",
-      "ZKLibrary",
-      "Bootstrap"
+      "Flutter",
+      "DevOps"
     ],
-    "liveLink": "https://hrsoft.msrnayeem.cloud"
+    "liveLink": "https://khadin.com"
   },
   {
     "title": "UploadCafe",
@@ -22,6 +23,16 @@
     "liveLink": "https://uploadcafe.com"
   },
   {
+    "title": "BeyondStar Pharmacy System",
+    "description": "A tailored pharmacy management system with bulk medicine import features and streamlined sales/purchase workflows.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "jQuery"
+    ],
+    "liveLink": "https://pharmacy.beyondstardigital.com"
+  },
+  {
     "title": "Webzez",
     "description": "A multi-tenant SaaS platform allowing users to launch their own eCommerce stores instantly. Managed core codebase and engineered new features.",
     "tags": [
@@ -30,6 +41,17 @@
       "Multi-tenancy"
     ],
     "liveLink": "https://webzez.com"
+  },
+  {
+    "title": "HRSoft",
+    "description": "A comprehensive HR solution featuring employee lifecycle management and an automated payroll engine. Featuring ZKTeco Biometric Integration for real-time automated attendance tracking.",
+    "tags": [
+      "Laravel",
+      "MySQL",
+      "ZKLibrary",
+      "Bootstrap"
+    ],
+    "liveLink": "https://hrsoft.msrnayeem.cloud"
   },
   {
     "title": "On-Demand",
@@ -62,15 +84,5 @@
       "Azure Indexing API"
     ],
     "liveLink": "https://redaxify.com"
-  },
-  {
-    "title": "BeyondStar Pharmacy System",
-    "description": "A tailored pharmacy management system with bulk medicine import features and streamlined sales/purchase workflows.",
-    "tags": [
-      "Laravel",
-      "MySQL",
-      "jQuery"
-    ],
-    "liveLink": "https://pharmacy.beyondstardigital.com"
   }
 ]
