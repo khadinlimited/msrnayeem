@@ -18,7 +18,8 @@
       "MySQL",
       "PostgreSQL",
       "SQLite",
-      "Firestore"
+      "Firestore",
+      "Redis"
     ]
   },
   {
